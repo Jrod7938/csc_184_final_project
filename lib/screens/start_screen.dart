@@ -13,9 +13,8 @@ class StartScreen extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Image.asset(
-            'assets/images/quiz-logo.png',
-            width: 300,
-            color: const Color.fromARGB(150, 255, 255, 255),
+            "assets/image/hofstra.png",
+            width: 500,
           ),
           const SizedBox(
             height: 80,
