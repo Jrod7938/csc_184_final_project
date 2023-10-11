@@ -1,0 +1,29 @@
+name: Flutter Web Deployment
+
+on:
+  push:
+    branches:
+      - master  # Trigger the workflow on push to main branch
+  workflow_dispatch:  # Allows manual triggering of the workflow
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2  # Checkout your repository
+
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.13.2'  # Specify the Flutter version you want to use
+
+    - name: Build Web
+      run: flutter build web --release
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        baseHref: /csc_184_final_project/
+        github_token: ${{ secrets.PERSONAL_TOKEN }}
+        publish_dir: build/web
