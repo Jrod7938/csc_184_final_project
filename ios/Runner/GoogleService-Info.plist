@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyAD7n_xnBISidv0D7XLB3WsDhnsUCP2_vM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>693589416130</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.csc184FinalProject</string>
+	<key>PROJECT_ID</key>
+	<string>flutterquiz-aa68e</string>
+	<key>STORAGE_BUCKET</key>
+	<string>flutterquiz-aa68e.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:693589416130:ios:e897c95a95a6049f14035b</string>
+</dict>
+</plist>
