@@ -5,9 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class QuestionsScreen extends StatefulWidget {
-  const QuestionsScreen({Key? key, required this.onSelectedAnswer}) : super(key: key);
-
   final void Function(String answer) onSelectedAnswer;
+  final String quizCollection;
+
+  const QuestionsScreen({super.key, required this.onSelectedAnswer, required this.quizCollection});
 
   @override
   State<QuestionsScreen> createState() => _QuestionsScreenState();
@@ -26,7 +27,7 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<QuizQuestion>>(
-      future: fetchQuestions(),
+      future: fetchQuestions(widget.quizCollection),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());

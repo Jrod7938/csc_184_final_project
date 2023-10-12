@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-
 import 'package:csc_184_final_project/data/questions.dart';
 import 'package:csc_184_final_project/models/quiz_questions.dart';
 import 'package:csc_184_final_project/screens/questions_screen.dart';
 import 'package:csc_184_final_project/screens/results_screen.dart';
 import 'package:csc_184_final_project/screens/start_screen.dart';
+import 'package:csc_184_final_project/screens/quiz_selection_screen.dart';
 
+// Defining the Quiz StatefulWidget
 class Quiz extends StatefulWidget {
-  const Quiz({Key? key}) : super(key: key); // Fixed super.key to key
+  const Quiz({Key? key}) : super(key: key);
 
   @override
   State<Quiz> createState() {
@@ -15,29 +16,28 @@ class Quiz extends StatefulWidget {
   }
 }
 
+// Defining the _QuizState class
 class _QuizState extends State<Quiz> {
   List<String> selectedAnswers = [];
-  List<QuizQuestion>? questions; // List to hold the fetched questions
-  var currentQuestionIndex = 0; // Index to track the current question
+  List<QuizQuestion>? questions;
+  var currentQuestionIndex = 0;
+  String? selectedQuizCollection;
   var activeScreen = 'start-screen';
 
-  @override
-  void initState() {
-    super.initState();
-    _fetchQuestions(); // Fetch questions when the state is initialized
-  }
-
-  Future<void> _fetchQuestions() async {
-    questions = await fetchQuestions();
+  // Fetch questions based on the selected quiz collection
+  Future<void> _fetchQuestions(String collection) async {
+    questions = await fetchQuestions(collection);
     setState(() {});
   }
 
+  // Method to switch to quiz-selection-screen
   void switchScreen() {
     setState(() {
-      activeScreen = 'questions-screen';
+      activeScreen = 'quiz-selection-screen';
     });
   }
 
+  // Method to handle answer selection
   void chooseAnswer(String answer) {
     selectedAnswers.add(answer);
 
@@ -47,43 +47,60 @@ class _QuizState extends State<Quiz> {
       });
     } else {
       setState(() {
-        currentQuestionIndex++; // Increment the question index after an answer is chosen
+        currentQuestionIndex++;
       });
     }
   }
 
+  // Method to restart the quiz
   void restartQuiz() {
     setState(() {
       selectedAnswers = [];
       currentQuestionIndex = 0;
-      activeScreen = 'start-screen';
+      activeScreen = 'quiz-selection-screen'; // Return to quiz-selection-screen on restart
     });
   }
 
+  // Method to handle quiz selection
+  void selectQuiz(String quizCollection) {
+    _fetchQuestions(quizCollection);
+    setState(() {
+      activeScreen = 'questions-screen';
+      selectedQuizCollection = quizCollection; // Store the selected collection name
+    });
+  }
+
+  // Build method to build the UI based on the active screen
   @override
   Widget build(BuildContext context) {
-    if (questions == null) {
-      return const MaterialApp(
-        home: Scaffold(
-          body: Center(child: CircularProgressIndicator()), // Show a loading indicator while questions are being fetched
-        ),
-      );
+    Widget screenWidget;
+
+    switch (activeScreen) {
+      case 'quiz-selection-screen':
+        screenWidget = QuizSelectionScreen(onQuizSelected: selectQuiz);
+        break;
+      case 'questions-screen':
+        if (questions == null || selectedQuizCollection == null) {
+          screenWidget = const Center(child: CircularProgressIndicator());
+        } else {
+          screenWidget = QuestionsScreen(
+            onSelectedAnswer: chooseAnswer,
+            quizCollection: selectedQuizCollection!,
+          );
+        }
+        break;
+      case 'results-screen':
+        screenWidget = ResultsScreen(
+          chosenAnswers: selectedAnswers,
+          onRestart: restartQuiz,
+          questions: questions!,
+        );
+        break;
+      default:
+        screenWidget = StartScreen(switchScreen);
     }
 
-    Widget screenWidget = StartScreen(switchScreen);
-
-    if (activeScreen == 'questions-screen') {
-      screenWidget = QuestionsScreen(onSelectedAnswer: chooseAnswer);
-    }
-
-    if (activeScreen == "results-screen") {
-      screenWidget = ResultsScreen(
-        chosenAnswers: selectedAnswers,
-        onRestart: restartQuiz,
-        questions: questions!, // Pass the list of questions to ResultsScreen
-      );
-    }
-
+    // Returning the MaterialApp widget
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
