@@ -1,12 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class QuizQuestion {
-  const QuizQuestion(this.text, this.answers);
-
-  final String text;
+  final String questionText;
   final List<String> answers;
+  final String correctAnswer;
 
-  List<String> getShuffledAnswers() {
-    final shuffledList = List.of(answers);
-    shuffledList.shuffle();
-    return shuffledList;
+  QuizQuestion(this.questionText, this.answers, this.correctAnswer);
+
+  factory QuizQuestion.fromFirestore(DocumentSnapshot doc) {
+    Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+    return QuizQuestion(data['questionText'], List<String>.from(data['answers']), data['correctAnswer']);
   }
 }

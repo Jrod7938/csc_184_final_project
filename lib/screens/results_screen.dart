@@ -1,26 +1,31 @@
-import 'package:csc_184_final_project/data/questions.dart';
-import 'package:csc_184_final_project/widgets/questions_summary.dart';
 import 'package:flutter/material.dart';
 
+import 'package:csc_184_final_project/models/quiz_questions.dart';
+import 'package:csc_184_final_project/widgets/questions_summary.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ResultsScreen extends StatelessWidget {
+  final List<String> chosenAnswers;
+  final void Function() onRestart;
+  final List<QuizQuestion> questions;
+
   const ResultsScreen({
-    super.key,
+    Key? key,
     required this.chosenAnswers,
     required this.onRestart,
-  });
+    required this.questions,
+  }) : super(key: key);
 
-  final void Function() onRestart;
-  final List<String> chosenAnswers;
-
-  List<Map<String, Object>> get summaryData {
+  List<Map<String, Object>> getSummaryData() {
     final List<Map<String, Object>> summary = [];
 
     for (var i = 0; i < chosenAnswers.length; i++) {
-      summary.add(
-        {'question_index': i, 'question': questions[i].text, 'correct_answer': questions[i].answers[0], 'user_answer': chosenAnswers[i]},
-      );
+      summary.add({
+        "question_index": i,
+        "question": questions[i].questionText,
+        "correct_answer": questions[i].correctAnswer,
+        "user_answer": chosenAnswers[i],
+      });
     }
 
     return summary;
@@ -28,12 +33,12 @@ class ResultsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final summaryData = getSummaryData();
+
     final numTotalQuestions = questions.length;
-    final numCorrectQuestions = summaryData
-        .where(
-          (data) => data['user_answer'] == data['correct_answer'],
-        )
-        .length;
+    final numCorrectQuestions = summaryData.where((data) {
+      return data["user_answer"] == data["correct_answer"];
+    }).length;
 
     return SizedBox(
       width: double.infinity,
