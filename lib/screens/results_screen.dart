@@ -4,6 +4,15 @@ import 'package:csc_184_final_project/models/quiz_questions.dart';
 import 'package:csc_184_final_project/widgets/questions_summary.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+/// The results screen widget
+///
+/// This widget displays the results of the quiz
+///
+/// This widget requires the [chosenAnswers], [onRestart], and [questions] parameters
+///
+/// The [chosenAnswers] parameter is a list of the user's chosen answers
+/// The [onRestart] parameter is a function that restarts the quiz
+/// The [questions] parameter is a list of [QuizQuestion] objects
 class ResultsScreen extends StatelessWidget {
   final List<String> chosenAnswers;
   final void Function() onRestart;

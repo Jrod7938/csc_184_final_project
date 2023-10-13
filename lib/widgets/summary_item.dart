@@ -2,6 +2,12 @@ import 'package:csc_184_final_project/widgets/question_identifier.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+/// The summary item widget
+///
+/// This widget displays the summary item
+///
+/// This widget requires the [itemData] parameter
+/// The [itemData] parameter is a map containing the summary item data
 class SummaryItem extends StatelessWidget {
   const SummaryItem(this.itemData, {super.key});
 

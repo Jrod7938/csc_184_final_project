@@ -6,7 +6,9 @@ import 'package:csc_184_final_project/screens/results_screen.dart';
 import 'package:csc_184_final_project/screens/start_screen.dart';
 import 'package:csc_184_final_project/screens/quiz_selection_screen.dart';
 
-// Defining the Quiz StatefulWidget
+/// The Quiz widget
+///
+/// This widget is the root widget of the application
 class Quiz extends StatefulWidget {
   const Quiz({Key? key}) : super(key: key);
 
@@ -16,7 +18,9 @@ class Quiz extends StatefulWidget {
   }
 }
 
-// Defining the _QuizState class
+/// The Quiz state
+///
+/// This class is the state of the [Quiz] widget
 class _QuizState extends State<Quiz> {
   List<String> selectedAnswers = [];
   List<QuizQuestion>? questions;
@@ -24,20 +28,20 @@ class _QuizState extends State<Quiz> {
   String? selectedQuizCollection;
   var activeScreen = 'start-screen';
 
-  // Fetch questions based on the selected quiz collection
+  /// Fetch questions based on the selected quiz collection
   Future<void> _fetchQuestions(String collection) async {
     questions = await fetchQuestions(collection);
     setState(() {});
   }
 
-  // Method to switch to quiz-selection-screen
+  /// Method to switch the screen
   void switchScreen() {
     setState(() {
       activeScreen = 'quiz-selection-screen';
     });
   }
 
-  // Method to handle answer selection
+  /// Method to choose an answer
   void chooseAnswer(String answer) {
     selectedAnswers.add(answer);
 
@@ -52,25 +56,24 @@ class _QuizState extends State<Quiz> {
     }
   }
 
-  // Method to restart the quiz
+  /// Method to restart the quiz
   void restartQuiz() {
     setState(() {
       selectedAnswers = [];
       currentQuestionIndex = 0;
-      activeScreen = 'quiz-selection-screen'; // Return to quiz-selection-screen on restart
+      activeScreen = 'quiz-selection-screen';
     });
   }
 
-  // Method to handle quiz selection
+  /// Method to handle quiz selection
   void selectQuiz(String quizCollection) {
     _fetchQuestions(quizCollection);
     setState(() {
       activeScreen = 'questions-screen';
-      selectedQuizCollection = quizCollection; // Store the selected collection name
+      selectedQuizCollection = quizCollection;
     });
   }
 
-  // Build method to build the UI based on the active screen
   @override
   Widget build(BuildContext context) {
     Widget screenWidget;
@@ -100,7 +103,6 @@ class _QuizState extends State<Quiz> {
         screenWidget = StartScreen(switchScreen);
     }
 
-    // Returning the MaterialApp widget
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(

@@ -4,6 +4,16 @@ import 'package:csc_184_final_project/widgets/answer_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+/// The questions screen widget
+///
+/// This widget displays the questions of the quiz
+///
+/// This widget requires the [onSelectedAnswer] and [quizCollection] parameters
+/// The [onSelectedAnswer] parameter is a function that is called when the user selects an answer
+/// The [quizCollection] parameter is the name of the collection to fetch questions from
+///
+/// The [onSelectedAnswer] function requires the [answer] parameter
+/// The [answer] parameter is the answer that the user selected
 class QuestionsScreen extends StatefulWidget {
   final void Function(String answer) onSelectedAnswer;
   final String quizCollection;
@@ -14,9 +24,11 @@ class QuestionsScreen extends StatefulWidget {
   State<QuestionsScreen> createState() => _QuestionsScreenState();
 }
 
+/// The questions screen state
 class _QuestionsScreenState extends State<QuestionsScreen> {
   var currentQuestionIndex = 0;
 
+  /// Method to answer a question
   void answerQuestion(String selectedAnswer) {
     widget.onSelectedAnswer(selectedAnswer);
     setState(() {

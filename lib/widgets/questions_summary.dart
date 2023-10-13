@@ -1,6 +1,12 @@
 import 'package:csc_184_final_project/widgets/summary_item.dart';
 import 'package:flutter/material.dart';
 
+/// The questions summary widget
+///
+/// This widget displays the summary of the questions
+///
+/// This widget requires the [summaryData] parameter
+/// The [summaryData] parameter is a list of maps containing the summary data
 class QuestionsSummary extends StatelessWidget {
   const QuestionsSummary({super.key, required this.summaryData});
 

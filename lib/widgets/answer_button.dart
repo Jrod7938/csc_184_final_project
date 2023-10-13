@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+/// The AnswerButton widget
+///
+/// This widget is a button that displays an answer
+///
+/// This widget requires the [answerText] and [onTap] parameters
+/// The [answerText] parameter is the text of the answer
+/// The [onTap] parameter is a function that is called when the button is tapped
+///
+/// The [onTap] function requires no parameters
 class AnswerButton extends StatelessWidget {
   const AnswerButton({
     super.key,

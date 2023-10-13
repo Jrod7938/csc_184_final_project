@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+/// The main method
+///
+/// This method is the entry point of the application
+/// This method initializes Firebase and runs the [Quiz] widget
 class QuizSelectionScreen extends StatelessWidget {
   final void Function(String quizCollection) onQuizSelected;
 
