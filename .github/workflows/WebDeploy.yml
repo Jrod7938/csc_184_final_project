@@ -3,7 +3,7 @@ name: Flutter Web Deployment
 on:
   push:
     branches:
-      - master  # Trigger the workflow on push to main branch
+      - main  # Trigger the workflow on push to main branch
   workflow_dispatch:  # Allows manual triggering of the workflow
 
 jobs:
