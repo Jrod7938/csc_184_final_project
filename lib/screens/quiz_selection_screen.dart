@@ -8,7 +8,10 @@ import 'package:google_fonts/google_fonts.dart';
 class QuizSelectionScreen extends StatelessWidget {
   final void Function(String quizCollection) onQuizSelected;
 
-  const QuizSelectionScreen({Key? key, required this.onQuizSelected}) : super(key: key);
+  final void Function() createQuiz;
+  final void Function() searchQuiz;
+
+  const QuizSelectionScreen({Key? key, required this.onQuizSelected, required this.createQuiz, required this.searchQuiz}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +24,7 @@ class QuizSelectionScreen extends StatelessWidget {
             'Select a Quiz',
             style: GoogleFonts.lato(
               fontSize: 64,
+              fontWeight: FontWeight.bold,
               color: Colors.white,
             ),
           ),
@@ -53,6 +57,52 @@ class QuizSelectionScreen extends StatelessWidget {
                 fontSize: 30,
               ),
             ),
+          ),
+          const SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: () => onQuizSelected('questions4'),
+            child: Text(
+              'Quiz 4',
+              style: GoogleFonts.lato(
+                fontSize: 30,
+              ),
+            ),
+          ),
+          const SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: () => onQuizSelected('questions5'),
+            child: Text(
+              'Quiz 5',
+              style: GoogleFonts.lato(
+                fontSize: 30,
+              ),
+            ),
+          ),
+          const SizedBox(height: 120),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () => createQuiz(),
+                child: Text(
+                  "Create Quiz",
+                  style: GoogleFonts.poppins(
+                    fontSize: 30,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 20),
+              ElevatedButton(
+                onPressed: () => searchQuiz(),
+                child: Text(
+                  "Search Quiz",
+                  style: GoogleFonts.poppins(
+                    fontSize: 30,
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),

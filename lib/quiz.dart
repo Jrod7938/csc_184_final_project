@@ -1,3 +1,4 @@
+import 'package:csc_184_final_project/screens/create_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:csc_184_final_project/data/questions.dart';
 import 'package:csc_184_final_project/models/quiz_questions.dart';
@@ -5,6 +6,8 @@ import 'package:csc_184_final_project/screens/questions_screen.dart';
 import 'package:csc_184_final_project/screens/results_screen.dart';
 import 'package:csc_184_final_project/screens/start_screen.dart';
 import 'package:csc_184_final_project/screens/quiz_selection_screen.dart';
+
+import 'screens/search_screen.dart';
 
 /// The Quiz widget
 ///
@@ -74,13 +77,41 @@ class _QuizState extends State<Quiz> {
     });
   }
 
+  void selectSearch(String quizName) async {
+    questions = await fetchQuiz(quizName);
+    setState(() {
+      activeScreen = 'questions-screen';
+      selectedQuizCollection = quizName;
+    });
+  }
+
+  void createQuiz() {
+    setState(() {
+      activeScreen = "create_screen";
+    });
+  }
+
+  void onQuizCreated() {
+    switchScreen();
+  }
+
+  void searchQuiz() {
+    setState(() {
+      activeScreen = "search-screen";
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget screenWidget;
 
     switch (activeScreen) {
       case 'quiz-selection-screen':
-        screenWidget = QuizSelectionScreen(onQuizSelected: selectQuiz);
+        screenWidget = QuizSelectionScreen(
+          onQuizSelected: selectQuiz,
+          createQuiz: createQuiz,
+          searchQuiz: searchQuiz,
+        );
         break;
       case 'questions-screen':
         if (questions == null || selectedQuizCollection == null) {
@@ -88,7 +119,7 @@ class _QuizState extends State<Quiz> {
         } else {
           screenWidget = QuestionsScreen(
             onSelectedAnswer: chooseAnswer,
-            quizCollection: selectedQuizCollection!,
+            questions: questions!,
           );
         }
         break;
@@ -98,6 +129,12 @@ class _QuizState extends State<Quiz> {
           onRestart: restartQuiz,
           questions: questions!,
         );
+        break;
+      case 'create_screen':
+        screenWidget = CreateScreen(onQuizCreated: onQuizCreated);
+        break;
+      case 'search-screen':
+        screenWidget = SearchScreen(onQuizSelected: selectSearch);
         break;
       default:
         screenWidget = StartScreen(switchScreen);
