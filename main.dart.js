@@ -44689,7 +44689,7 @@ $0(){this.a.abA(this.b)},
 $S:0}
 A.Kw.prototype={
 L(a){var s=this,r=null,q=t.F
-return A.nv(A.k1(A.a([A.cA("Select a Quiz",r,r,r,A.jR().$3$color$fontSize$fontWeight(B.j,64,B.aq),r,r),B.jz,A.k8(A.cA("Quiz 1",r,r,r,A.jR().$1$fontSize(30),r,r),new A.a6J(s),r),B.h1,A.k8(A.cA("Quiz 2",r,r,r,A.jR().$1$fontSize(30),r,r),new A.a6K(s),r),B.h1,A.k8(A.cA("Quiz 3",r,r,r,A.jR().$1$fontSize(30),r,r),new A.a6L(s),r),B.h1,A.k8(A.cA("Quiz 4",r,r,r,A.jR().$1$fontSize(30),r,r),new A.a6M(s),r),B.h1,A.k8(A.cA("Quiz 5",r,r,r,A.jR().$1$fontSize(30),r,r),new A.a6N(s),r),B.Ld,A.zs(A.a([A.k8(A.cA("Create Quiz",r,r,r,A.awI().$1$fontSize(30),r,r),new A.a6O(s),r),B.xk,A.k8(A.cA("Search Quiz",r,r,r,A.awI().$1$fontSize(30),r,r),new A.a6P(s),r)],q),B.aC,B.dN,B.bj)],q),B.aC,B.dN,B.bj),r,r)}}
+return A.nv(A.k1(A.a([A.cA("Select a Quiz",r,r,r,A.jR().$3$color$fontSize$fontWeight(B.j,64,B.aq),r,r),B.jz,A.k8(A.cA("Novice",r,r,r,A.jR().$1$fontSize(30),r,r),new A.a6J(s),r),B.h1,A.k8(A.cA("Intermediate",r,r,r,A.jR().$1$fontSize(30),r,r),new A.a6K(s),r),B.h1,A.k8(A.cA("Proficient",r,r,r,A.jR().$1$fontSize(30),r,r),new A.a6L(s),r),B.h1,A.k8(A.cA("Advanced",r,r,r,A.jR().$1$fontSize(30),r,r),new A.a6M(s),r),B.h1,A.k8(A.cA("Expert",r,r,r,A.jR().$1$fontSize(30),r,r),new A.a6N(s),r),B.Ld,A.zs(A.a([A.k8(A.cA("Create Quiz",r,r,r,A.awI().$1$fontSize(30),r,r),new A.a6O(s),r),B.xk,A.k8(A.cA("Search Quiz",r,r,r,A.awI().$1$fontSize(30),r,r),new A.a6P(s),r)],q),B.aC,B.dN,B.bj)],q),B.aC,B.dN,B.bj),r,r)}}
 A.a6J.prototype={
 $0(){return this.a.c.$1("questions")},
 $S:0}
