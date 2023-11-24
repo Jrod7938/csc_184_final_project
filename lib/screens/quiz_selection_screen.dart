@@ -32,7 +32,7 @@ class QuizSelectionScreen extends StatelessWidget {
           ElevatedButton(
             onPressed: () => onQuizSelected('questions'),
             child: Text(
-              'Quiz 1',
+              'Novice',
               style: GoogleFonts.lato(
                 fontSize: 30,
               ),
@@ -42,7 +42,7 @@ class QuizSelectionScreen extends StatelessWidget {
           ElevatedButton(
             onPressed: () => onQuizSelected('questions2'),
             child: Text(
-              'Quiz 2',
+              'Intermediate',
               style: GoogleFonts.lato(
                 fontSize: 30,
               ),
@@ -52,7 +52,7 @@ class QuizSelectionScreen extends StatelessWidget {
           ElevatedButton(
             onPressed: () => onQuizSelected('questions3'),
             child: Text(
-              'Quiz 3',
+              'Proficient',
               style: GoogleFonts.lato(
                 fontSize: 30,
               ),
@@ -62,7 +62,7 @@ class QuizSelectionScreen extends StatelessWidget {
           ElevatedButton(
             onPressed: () => onQuizSelected('questions4'),
             child: Text(
-              'Quiz 4',
+              'Advanced',
               style: GoogleFonts.lato(
                 fontSize: 30,
               ),
@@ -72,7 +72,7 @@ class QuizSelectionScreen extends StatelessWidget {
           ElevatedButton(
             onPressed: () => onQuizSelected('questions5'),
             child: Text(
-              'Quiz 5',
+              'Expert',
               style: GoogleFonts.lato(
                 fontSize: 30,
               ),
