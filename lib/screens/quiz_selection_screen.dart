@@ -23,7 +23,7 @@ class QuizSelectionScreen extends StatelessWidget {
           Text(
             'Select a Quiz',
             style: GoogleFonts.lato(
-              fontSize: 64,
+              fontSize: 32,
               fontWeight: FontWeight.bold,
               color: Colors.white,
             ),
@@ -78,7 +78,7 @@ class QuizSelectionScreen extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 120),
+          const SizedBox(height: 20),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -88,7 +88,7 @@ class QuizSelectionScreen extends StatelessWidget {
                 child: Text(
                   "Create Quiz",
                   style: GoogleFonts.poppins(
-                    fontSize: 30,
+                    fontSize: 18,
                   ),
                 ),
               ),
@@ -98,7 +98,7 @@ class QuizSelectionScreen extends StatelessWidget {
                 child: Text(
                   "Search Quiz",
                   style: GoogleFonts.poppins(
-                    fontSize: 30,
+                    fontSize: 18,
                   ),
                 ),
               ),
