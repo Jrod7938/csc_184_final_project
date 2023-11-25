@@ -33,6 +33,7 @@ class StartScreen extends StatelessWidget {
           ),
           Text(
             "Learn Flutter the fun way!",
+            textAlign: TextAlign.center,
             style: GoogleFonts.lato(
               color: const Color.fromARGB(255, 255, 255, 255),
               fontSize: 36,
